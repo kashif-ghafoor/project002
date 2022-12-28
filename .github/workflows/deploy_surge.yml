@@ -21,4 +21,4 @@ jobs:
       - name: Install Surge
         run: npm install -g surge
       - name: Run surge
-        run: surge ./kashif-ghafoor-project002.surge.sh --token ${{ secrets.SURGUE_TOEKEN }}
+        run: surge ./ --domain kashif-ghafoor-project002.surge.sh --token ${{ secrets.SURGUE_TOEKEN }}
