@@ -1,0 +1,24 @@
+name: Deploy React App
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Deploying to surge
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+      - name: installing corepack for yarn
+        run: npm i corepack
+      - name: activating corepack
+        run: corepack prepare yarn@stable --activate
+      - name: Build React App
+        run: yarn build
+      - name: Install Surge
+        run: npm install -g surge
+      - name: Run surge
+        run: surge ./kashif-ghafoor-project002.surge.sh --token ${{ secrets.SURGE_TOKEN }}
